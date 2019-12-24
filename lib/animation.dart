@@ -62,7 +62,7 @@ class TestPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final height = size.height - size.height * 0.5;
+    final height = size.height;
 
     canvas.translate(0, height);
 
@@ -73,17 +73,19 @@ class TestPainter extends CustomPainter {
 
     var path = Path();
     path.moveTo(0, size.height * 0.75 - height * Math.sin(pi) / 4);
-    var A = Offset(size.width * 0.25,
-        size.height * 0.75 - height * Math.sin(pi - Math.pi / 4) / 4);
-    var B = Offset(size.width * 0.5,
-        size.height * 0.75 - height * Math.sin(pi - 2 * Math.pi / 4) / 4);
-    var C = Offset(size.width * 0.75,
-        size.height * 0.75 - height * Math.sin(pi - 3 * Math.pi / 4) / 4);
-    var D = Offset(size.width * 1.0,
-        size.height * 0.75 - height * Math.sin(pi - Math.pi) / 4);
+    var A = Offset(size.width * 0.33,
+        size.height * 0.75 - height * Math.sin(pi - Math.pi / 3) / 4);
+    var B = Offset(size.width * 0.66,
+        size.height * 0.75 - height * Math.sin(pi - 2 * Math.pi / 3) / 4);
+    var C = Offset(size.width * 1.0,
+        size.height * 0.75 - height * Math.sin(pi - 3 * Math.pi) / 4);
 
-    path.quadraticBezierTo(A.dx, A.dy, B.dx, B.dy);
-    path.quadraticBezierTo(C.dx, C.dy, D.dx, D.dy);
+//
+    path.cubicTo(A.dx, A.dy, B.dx, B.dy, C.dx, C.dy);
+
+//
+//    path.quadraticBezierTo(A.dx, A.dy, B.dx, B.dy);
+//    path.quadraticBezierTo(C.dx, C.dy, D.dx, D.dy);
     path.lineTo(size.width, size.height);
     path.lineTo(0, size.height);
     canvas.drawPath(path, paint);
