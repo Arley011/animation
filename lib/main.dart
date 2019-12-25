@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'animation.dart';
 
 void main() => runApp(MyApp());
@@ -9,8 +10,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Waves',
-      home: AnimationTest(),
+      home: Scaffold(
+          body: AnimationTest(
+        quantity: 2,
+        color: Colors.red,
+        amplitude: 0.5,
+        period: 4,
+      )),
     );
   }
 }
-
